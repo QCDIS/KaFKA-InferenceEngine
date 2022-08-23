@@ -32,7 +32,10 @@ import scipy.sparse as sp
 import scipy.sparse.linalg as spl
 import datetime as dt
 import os
-import gdal
+try:
+    from osgeo import gdal
+except ImportError:
+    import gdal
 
 import logging
 LOG = logging.getLogger(__name__)
