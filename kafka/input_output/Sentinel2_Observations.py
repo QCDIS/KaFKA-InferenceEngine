@@ -7,8 +7,15 @@ import sys
 
 import numpy as np
 import scipy.sparse as sp # Required for unc
-import gdal
-import osr
+try:
+    from osgeo import gdal
+except ImportError:
+    import gdal
+
+try:
+    from osgeo import osr
+except ImportError:
+    import osr
 
 import xml.etree.ElementTree as ET
 from collections import namedtuple
