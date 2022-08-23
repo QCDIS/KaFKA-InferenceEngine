@@ -1,6 +1,16 @@
 import numpy as np
-import gdal
-import osr
+
+try:
+    from osgeo import gdal
+except ImportError:
+    import gdal
+
+try:
+    from osgeo import osr
+except ImportError:
+    import osr
+
+    
 """
 I need to put some utils in here. Seems like the most obvious place...
 """
