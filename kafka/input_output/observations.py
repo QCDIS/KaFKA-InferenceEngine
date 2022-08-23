@@ -46,7 +46,12 @@ from collections import namedtuple
 
 from BRDF_descriptors import RetrieveBRDFDescriptors
 
-import gdal
+
+try:
+    from osgeo import gdal
+except ImportError:
+    import gdal
+
 
 import numpy as np
 #  from kernels import Kernels
