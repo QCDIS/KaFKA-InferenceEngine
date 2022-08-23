@@ -7,11 +7,17 @@ import glob
 import os
 from collections import namedtuple
 
-import gdal
+try:
+    from osgeo import gdal
+except ImportError:
+    import gdal
 
 import numpy as np
 
-import osr
+try:
+    from osgeo import osr
+except ImportError:
+    import osr
 
 import scipy.sparse as sp
 
