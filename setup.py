@@ -7,7 +7,7 @@ requirements = [
     'numpy',
     'scipy',
     'gdal',
-    # 'BRDF_descriptors', # Not available for automatic installation
+    'BRDF_descriptors @ https://github.com/QCDIS/BRDF_descriptors.git',
     'matplotlib'
 ]
 
