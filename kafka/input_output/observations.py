@@ -38,23 +38,22 @@ M*D09GA
 MCD43A1/2 -> See BRDF_descriptors!
 
 """
-import datetime
 import _pickle as cPickle
+import datetime
 import glob
 import os
 from collections import namedtuple
 
 from BRDF_descriptors import RetrieveBRDFDescriptors
 
-
 try:
     from osgeo import gdal
 except ImportError:
     import gdal
 
+from SIAC import  kernels
 
 import numpy as np
-#  from kernels import Kernels
 
 import scipy.sparse as sp
 from scipy.ndimage import zoom
@@ -139,7 +138,7 @@ class MOD09_ObservationsKernels(object):
         vza = zoom(vza, 2, order=0)
         sza = zoom(sza, 2, order=0)
         mask = zoom(mask, 2, order=0)
-        K = Kernels(vza, sza, raa, LiType="Sparse", doIntegrals=False,
+        K = kernels.Kernels(vza, sza, raa, LiType="Sparse", doIntegrals=False,
                     normalise=1, RecipFlag=True,
                     RossHS=False, MODISSPARSE=True, RossType="Thick")
         uncertainty = refl*0 + unc[band_no-1]
@@ -195,7 +194,7 @@ class SynergyKernels(object):
         # find the requested date
         date_idx = self.dates.index(the_date)
         BHR = []
-        for band in xrange(7):
+        for band in range(7):
             g = gdal.Open(self.kernels[date_idx].replace(
                 "b0", "b%d" % band))
             kernels = g.ReadAsArray()  # 3*nx*ny
