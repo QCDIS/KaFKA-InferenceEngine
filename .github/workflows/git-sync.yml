@@ -15,7 +15,7 @@ jobs:
 
     - name: Fetch upstream
       run: |
-        git remote add upstream https://github.com/QCDIS/KaFKA-InferenceEngine.git
+        git remote add upstream https://github.com/multiply-org/KaFKA-InferenceEngine.git
         git fetch upstream
 
     - name: Check if there are changes
